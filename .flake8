@@ -1,0 +1,3 @@
+[flake8]
+exclude = 
+    shipping_company\__init__.py

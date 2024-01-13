@@ -1,5 +1,4 @@
 
-
 class Route:
 
     def __init__(self,
@@ -12,5 +11,7 @@ class Route:
         self.destination = destination
         self.distance = distance
 
-    def calculate_travel_time(self):
-        pass
+    def calculate_travel_time(self, speed: float) -> object:
+        if speed <= 0:
+            raise ValueError("speed must be positive")
+        return self.distance / speed
