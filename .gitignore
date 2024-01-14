@@ -2,3 +2,4 @@ venv
 .env
 maritime_shipping_company.egg-info
 __pycache__
+.vscode
