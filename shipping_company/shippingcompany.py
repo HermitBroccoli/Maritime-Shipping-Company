@@ -8,9 +8,9 @@ class ShippingCompany:
 
     def __init__(self, name_company: str) -> None:
         self.name_company = name_company  # название компании
-        self.fleet: List[Ship] = []
-        self.routers: List[Route] = []
-        self.captains: List[Captain] = []
+        self.fleet: List[Ship] = []  # спикок кораблей
+        self.routers: List[Route] = []  # список путей
+        self.captains: List[Captain] = []  # список капитанов
 
     def add_ship(self, ship: Ship) -> None:
         self.fleet.append(ship)
