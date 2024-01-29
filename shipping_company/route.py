@@ -1,6 +1,5 @@
 
 class Route:
-
     def __init__(self,
                  departure_point: str,  # начальный пункт
                  destination: str,  # конечный пункт

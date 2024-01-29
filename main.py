@@ -31,3 +31,6 @@ company1.hire_capitan(captain=capitan1)
 ship1.load_cargo(cargo=500)
 ship1.change_location(new_location="Владивосток")
 ship1.speed = 35.7
+
+print(ship1.cargo)
+print(ship1.current_location)

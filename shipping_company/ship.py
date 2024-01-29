@@ -1,7 +1,9 @@
+
+from .transport import Transport
 from .route import Route
 
 
-class Ship:
+class Ship(Transport):
     def __init__(self,
                  name: str,
                  capacity: int,
@@ -10,12 +12,37 @@ class Ship:
                  speed: float
                  ) -> None:
 
-        self.name = name  # наименования судна
-        self.capacity = capacity  # вместимость
-        self.year_built = year_built  # год постройки
-        self.current_location: str = current_location  # местонахождение
-        self.cargo: float = 0  # груз отсутвует
-        self.speed: float = speed  # скорость
+        super().__init__(name, capacity, year_built, speed)
+        self.__current_location: str = current_location  # местонахождение
+        self.__cargo: float = 0  # груз отсутвует
+
+    @property
+    def speed(self) -> float:
+        return self.__speed
+
+    @speed.setter
+    def speed(self, value: float) -> float:
+        self.__speed = value
+
+    # полученние текующего места нахождения
+    @property
+    def current_location(self) -> str:
+        return self.__current_location
+
+    # сеетор для сохранения нового значения местанахождения
+    @current_location.setter
+    def current_location(self, value: str) -> None:
+        self.__current_location = value
+
+    # получение количества загруженоссти
+    @property
+    def cargo(self) -> float:
+        return self.__cargo
+
+    #  сеттор для сохренения нового значения загруженности
+    @cargo.setter
+    def cargo(self, cargo: float) -> None:
+        self.__cargo = cargo
 
     def change_location(self, new_location: str) -> None:
         self.current_location = new_location
@@ -30,9 +57,9 @@ class Ship:
                 f"Cannot load cargo: Exceeds capacity of {self.capacity} tons."
             )
 
-        self.cargo += cargo
+        self.cargo = self.cargo + cargo
 
-    def unload_cargo(self, cargo):
+    def unload_cargo(self, cargo: float):
 
         if cargo < 0:
             raise ValueError("Cargo weight cannot be negative.")
@@ -42,7 +69,9 @@ class Ship:
                 f"Cannot load cargo: Exceeds capacity of {self.capacity} tons."
             )
 
-        self.cargo -= cargo
+        new_cargo = self.cargo - cargo
+
+        self.cargo = new_cargo
 
     def get_travel_time(self, route: Route) -> float:
         return route.calculate_travel_time(self.speed)
