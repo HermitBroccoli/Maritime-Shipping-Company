@@ -57,7 +57,7 @@ class Ship(Transport):
                 f"Cannot load cargo: Exceeds capacity of {self.capacity} tons."
             )
 
-        self.cargo = self.cargo + cargo
+        self.cargo += cargo
 
     def unload_cargo(self, cargo: float):
 
@@ -69,9 +69,7 @@ class Ship(Transport):
                 f"Cannot load cargo: Exceeds capacity of {self.capacity} tons."
             )
 
-        new_cargo = self.cargo - cargo
-
-        self.cargo = new_cargo
+        self.cargo -= cargo
 
     def get_travel_time(self, route: Route) -> float:
         return route.calculate_travel_time(self.speed)
