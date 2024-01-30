@@ -24,13 +24,20 @@ capitan1 = Captain(
 
 company1 = ShippingCompany(name_company="ООО 'Круиз'")
 
-company1.add_ship(ship=ship1)
-company1.add_route(route=route1)
-company1.hire_capitan(captain=capitan1)
+company1.add_ship(ship1)
+company1.add_route(route1)
+company1.hire_captain(capitan1)
 
 ship1.load_cargo(cargo=500)
+ship1.unload_cargo(50)
 ship1.change_location(new_location="Владивосток")
 ship1.speed = 35.7
 
 print(ship1.cargo)
 print(ship1.current_location)
+
+print(
+    company1.list_captain(),
+    company1.list_ship(),
+    company1.list_route()
+)

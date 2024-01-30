@@ -1,33 +1,106 @@
 from typing import List
-from .ship import Ship
-from .route import Route
-from .captain import Captain
+from shipping_company.ship import Ship
+from shipping_company.route import Route
+from shipping_company.captain import Captain
 
 
 class ShippingCompany:
 
+    """
+    Представляет собой морскую транспортную компанию с названием, флотом,
+    маршрутами и капитанами. Управляет добавлением кораблей, маршрутов и
+    наймом капитанов. Предоставляет списки кораблей, маршрутов и капитанов.
+    """
+
     def __init__(self, name_company: str) -> None:
-        self.name_company = name_company  # название компании
-        self.fleet: List[Ship] = []  # спикок кораблей
-        self.routers: List[Route] = []  # список путей
-        self.captains: List[Captain] = []  # список капитанов
+        """
+        Инициализирует экземпляр класса ShippingCompany. Принимает название
+        компании и инициализирует списки для управления флотом кораблей,
+        маршрутами и капитанами.
+        """
 
-    def add_ship(self, ship: Ship) -> None:
-        self.fleet.append(ship)
+        self.__name_company: str = name_company  # название компании
+        self.__fleet: List[Ship] = []  # спикок кораблей
+        self.__routers: List[Route] = []  # список путей
+        self.__captains: List[Captain] = []  # список капитанов
 
-    def add_route(self, route: Route) -> None:
-        self.routers.append(route)
+    @property
+    def name_company(self) -> str:
+        """
+        Возвращает название транспортной компании.
+        """
 
-    def hire_capitan(self, captain: Captain) -> None:
-        self.captains.append(captain)
+        return self.__name_company
+
+    @property
+    def fleets(self) -> List[Ship]:
+        """
+        Возвращает список кораблей, принадлежащих компании.
+        """
+
+        return self.__fleet
+
+    def add_ship(self, value: Ship) -> None:
+        """
+        Добавляет корабль в флот компании. Принимает экземпляр класса Ship.
+        """
+
+        self.__fleet.append(value)
+
+    @property
+    def routers(self) -> List[Route]:
+        """
+        Возвращает список маршрутов, доступных для компании.
+        """
+
+        return self.__routers
+
+    def add_route(self, value: Route) -> None:
+        """
+        Добавляет маршрут в список маршрутов компании. Принимает экземпляр
+        класса Route.
+        """
+
+        self.__routers.append(value)
+
+    @property
+    def captains(self) -> List[Captain]:
+        """
+        Возвращает список капитанов, работающих в компании.
+        """
+
+        return self.__captains
+
+    def hire_captain(self, value: Captain) -> None:
+        """
+        фНанимает капитана для работы в компании. Принимает экземпляр класса
+        Captain.
+        """
+
+        self.__captains.append(value)
 
     def list_ship(self) -> List[str]:
-        return [ship.name for ship in self.fleet]
+        """
+        Возвращает список названий всех кораблей в флоте компании.
+        """
+
+        return [ship.name for ship in self.fleets]
 
     def list_route(self) -> List[str]:
-        return [f"{route.departure_point} to {route.destination}"
+        """
+        Возвращает список всех маршрутов, доступных для компании, в формате
+        'отправление - назначение'.
+        """
+
+        return [f"'{route.departure_point}' to '{route.destination}'"
                 for route in self.routers]
 
     def list_captain(self) -> List[str]:
-        return [f"{capacitan.name} {capacitan.surname}"
-                for capacitan in self.captains]
+
+        """
+        Возвращает список всех капитанов, работающих в компании, в формате
+        'имя фамилия'.
+        """
+
+        return [f"{captains.name} {captains.surname}"
+                for captains in self.captains]
