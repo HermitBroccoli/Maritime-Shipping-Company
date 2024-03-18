@@ -52,14 +52,14 @@ class Captain:
         self.__surname = value
 
     @property
-    def qualifier(self) -> str:
+    def qualification(self) -> str:
         """
         Возвращает квалификацию капитана.
         """
         return self.__qualification
 
-    @qualifier.setter
-    def qualifier(self, value: str) -> None:
+    @qualification.setter
+    def qualification(self, value: str) -> None:
         """
         Устанавливает новую квалификацию капитана. Принимает строку с
         квалификацией.

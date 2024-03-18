@@ -36,7 +36,7 @@ class Ship(Transport):
         return self.__speed
 
     @speed.setter
-    def speed(self, value: float) -> None:
+    def speed_edit(self, value: float) -> None:
         """
         Устанавливает новую скорость корабля. Принимает значение скорости.
         """
